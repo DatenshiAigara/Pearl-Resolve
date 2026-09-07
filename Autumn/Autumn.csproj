@@ -1,14 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net4.5.2</TargetFramework>
     <ApplicationIcon>Resources/Icons/Autumn.ico</ApplicationIcon>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackAsTool>False</PackAsTool>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Hexa.NET.ImGui" Version="2.2.9" />
     <PackageReference Include="Hexa.NET.ImGui.Backends" Version="1.0.18" />
@@ -19,16 +28,7 @@
     <PackageReference Include="Silk.NET.OpenGL" Version="2.23.0" />
     <PackageReference Include="Silk.NET.Windowing" Version="2.23.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.11" />
     <PackageReference Include="Tomlyn" Version="0.20.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Libraries\NARCSharp\NARCSharp\NARCSharp.csproj" />
-    <ProjectReference Include="..\Libraries\BYAMLSharp\BYAMLSharp\BYAMLSharp.csproj" />
-    <ProjectReference Include="..\Libraries\SPICA\SPICA\SPICA.csproj" />
-    <ProjectReference Include="..\Libraries\SceneGL\SceneGL\SceneGL.csproj" />
-    <ProjectReference Include="..\Libraries\tinyfiledialogs\src\TinyFileDialogsSharp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +54,24 @@
 
   <ItemGroup>
     <Content Include="$(MSBuildProjectDirectory)\Resources\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" DestinationFolder="Resources" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BYAMLSharp">
+      <HintPath>..\Libraries\BYAMLSharp\BYAMLSharp\bin\Debug\net8.0\BYAMLSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="NARCSharp">
+      <HintPath>..\Libraries\NARCSharp\NARCSharp\bin\Debug\net8.0\NARCSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SceneGL">
+      <HintPath>..\Libraries\SceneGL\SceneGL\bin\Debug\net7.0\SceneGL.dll</HintPath>
+    </Reference>
+    <Reference Include="SPICA">
+      <HintPath>..\Libraries\SPICA\SPICA\bin\Debug\net6.0\SPICA.dll</HintPath>
+    </Reference>
+    <Reference Include="TinyFileDialogsSharp">
+      <HintPath>..\Libraries\tinyfiledialogs\src\bin\Debug\net7.0\TinyFileDialogsSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
